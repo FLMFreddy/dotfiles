@@ -10,12 +10,17 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'scrooloose/syntastic'
 Plugin 'Lokaltog/vim-easymotion'
-Plugin 'scrooloose/nerdtree'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'nvie/vim-flake8'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'ervandew/supertab'
+Plugin 'wincent/Command-T'
+Plugin 'sjbach/lusty'
+Plugin 'scrooloose/nerdtree'
+Plugin 'sjl/badwolf'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 
 call vundle#end()
 filetype plugin indent on
@@ -23,35 +28,36 @@ filetype plugin indent on
 " Init powerline
 set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 
-" Init ctrlp
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-
 " Map leader to ,
 let mapleader = ","
 " Use 256 colours (Use this setting only if your terminal supports 256 colours)
-set t_Co=256
 set laststatus=2
 set encoding=utf-8
-set nu
+set number
+set relativenumber
 set backup
 set backupdir=~/.backupvim
 set dir=~/.backupvim
 set autoread
-
-" NERDTree specific settings
-noremap <c-j> <c-w>j
-noremap <c-k> <c-w>k
-noremap <c-l> <c-w>l
-noremap <c-h> <c-w>h
+set hidden
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 
 " Solarized
-let g:solarized_termcolors=256
 syntax enable
-set background=light
-colorscheme solarized
+"set background=dark
+colorscheme badwolf
+let g:badwolf_darkgutter = 1
+let g:badwolf_tabline = 3
 
 " NERDTreeToggle
 noremap <leader>nt :NERDTreeToggle<cr>
+
+" Trigger configuration
+let g:UltiSnipsExpandTrigger="tab"
+let g:UltiSnipsJumpForwardTrigger="<c-b"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+let g:UltiSnipsEditSplit="vertical"
 
 " Edit the .vimrc
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
@@ -75,3 +81,12 @@ nnoremap <space> za
 
 " Flake8 configuration
 let g:flake8_ignore="E501"
+
+" Close buffer
+nnoremap <F2> :close<CR>
+
+" GUI Font
+set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 10
+
+" map <leader>l to display listchars
+noremap <leader>l :set list!<CR>
