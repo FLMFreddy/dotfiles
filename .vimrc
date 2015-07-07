@@ -2,7 +2,7 @@ set nocompatible
 filetype off
 
 " Init Vundle
-set rtp+=~/.vim/bundle/Vundle.vim\
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " Plugin section
@@ -10,17 +10,24 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'scrooloose/syntastic'
 Plugin 'Lokaltog/vim-easymotion'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'nvie/vim-flake8'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'ervandew/supertab'
-Plugin 'wincent/Command-T'
 Plugin 'sjbach/lusty'
 Plugin 'scrooloose/nerdtree'
 Plugin 'sjl/badwolf'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'hynek/vim-python-pep8-indent'
+Plugin 'Yggdroot/indentLine'
+Plugin 'git@github.com:sjl/gundo.vim.git'
+Plugin 'mileszs/ack.vim'
+Plugin 'rdolgushin/groovy.vim'
+Plugin 'joonty/vdebug'
+Plugin 'altercation/vim-colors-solarized'
 
 call vundle#end()
 filetype plugin indent on
@@ -41,24 +48,28 @@ set dir=~/.backupvim
 set autoread
 set hidden
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+set foldmethod=syntax
+set backspace=2
 
 " Solarized
 syntax enable
-"set background=dark
-colorscheme badwolf
-let g:badwolf_darkgutter = 1
-let g:badwolf_tabline = 3
+set background=dark
+colorscheme solarized
+let g:solarized_termcolors=256
 
 " NERDTreeToggle
 noremap <leader>nt :NERDTreeToggle<cr>
 
 " Trigger configuration
-let g:UltiSnipsExpandTrigger="tab"
-let g:UltiSnipsJumpForwardTrigger="<c-b"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsExpandTrigger="<leader><tab>"
 
 let g:UltiSnipsEditSplit="vertical"
+noremap <leader>us :UltiSnipsEdit<CR>
 
+" YCM 
+nnoremap <leader>jd :YcmCompleter GoTo<CR>
+" Syntastic
+let g:syntastic_python_checkers = ["frosted","python"]
 " Edit the .vimrc
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 " Source the .vimrc
@@ -78,9 +89,6 @@ nnoremap <Leader>rtw :%s/\s\+$//e<CR>
 
 " Make space more useful
 nnoremap <space> za
-
-" Flake8 configuration
-let g:flake8_ignore="E501"
 
 " Close buffer
 nnoremap <F2> :close<CR>
