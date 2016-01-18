@@ -28,6 +28,8 @@ Plugin 'mileszs/ack.vim'
 Plugin 'rdolgushin/groovy.vim'
 Plugin 'joonty/vdebug'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-notes'
 
 call vundle#end()
 filetype plugin indent on
@@ -37,7 +39,6 @@ set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 
 " Map leader to ,
 let mapleader = ","
-" Use 256 colours (Use this setting only if your terminal supports 256 colours)
 set laststatus=2
 set encoding=utf-8
 set number
@@ -55,7 +56,6 @@ set backspace=2
 syntax enable
 set background=dark
 colorscheme solarized
-let g:solarized_termcolors=256
 
 " NERDTreeToggle
 noremap <leader>nt :NERDTreeToggle<cr>
